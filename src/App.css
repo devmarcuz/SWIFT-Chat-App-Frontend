@@ -8,11 +8,16 @@
   font-family: poppins;
 }
 
+html {
+  height: -webkit-fill-available;
+}
+
 body {
   font-family: poppins;
   max-height: 100vh;
   max-width: 100vw;
   overflow: hidden;
+  height: -webkit-fill-available;
 }
 
 button,
