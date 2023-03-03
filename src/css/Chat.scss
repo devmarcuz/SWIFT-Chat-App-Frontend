@@ -685,8 +685,9 @@
     }
 
     .footer {
-      position: absolute;
-      bottom: 0;
+      position: fixed;
+      bottom: 0%;
+      // top: 0;
       left: 0;
       background: var(--bg-green);
       background: rgb(0, 95, 0);
@@ -739,6 +740,18 @@
 
       @media screen and (min-width: 801px) {
         display: none;
+      }
+
+      @media screen and (max-width: 375px) {
+        bottom: 10%;
+      }
+
+      @media screen and (max-width: 414px) {
+        bottom: 33%;
+      }
+
+      @media screen and (max-width: 391px) {
+        bottom: 29%;
       }
     }
 

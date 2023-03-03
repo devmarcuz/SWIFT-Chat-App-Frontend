@@ -620,8 +620,8 @@
   color: rgb(223, 223, 223);
 }
 .c-container .chat-container .footer {
-  position: absolute;
-  bottom: 0;
+  position: fixed;
+  bottom: 0%;
   left: 0;
   background: var(--bg-green);
   background: rgb(0, 95, 0);
@@ -671,6 +671,21 @@
 @media screen and (min-width: 801px) {
   .c-container .chat-container .footer {
     display: none;
+  }
+}
+@media screen and (max-width: 375px) {
+  .c-container .chat-container .footer {
+    bottom: 10%;
+  }
+}
+@media screen and (max-width: 414px) {
+  .c-container .chat-container .footer {
+    bottom: 33%;
+  }
+}
+@media screen and (max-width: 391px) {
+  .c-container .chat-container .footer {
+    bottom: 29%;
   }
 }
 @media screen and (max-width: 800px) {
