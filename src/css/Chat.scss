@@ -24,7 +24,8 @@
     }
 
     @media screen and (max-width: 800px) {
-      height: 100vh;
+      // height: 100vh;
+      height: 100%;
       width: 100%;
     }
 
@@ -398,6 +399,8 @@
             color: white;
             font-size: 16px;
             font-weight: bold;
+            text-align: center;
+            width: 100%;
           }
         }
 
@@ -709,10 +712,12 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        user-select: none;
 
         svg {
           color: black;
           font-size: 23px;
+          user-select: none;
         }
 
         &:hover {
@@ -742,17 +747,17 @@
         display: none;
       }
 
-      @media screen and (max-width: 375px) {
-        bottom: 10%;
-      }
+      // @media screen and (max-width: 375px) {
+      //   bottom: 10%;
+      // }
 
-      @media screen and (max-width: 414px) {
-        bottom: 33%;
-      }
+      // @media screen and (max-width: 414px) {
+      //   bottom: 33;
+      // }
 
-      @media screen and (max-width: 391px) {
-        bottom: 29%;
-      }
+      // @media screen and (max-width: 391px) {
+      //   bottom: 29%;
+      // }
     }
 
     @media screen and (max-width: 800px) {

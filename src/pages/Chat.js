@@ -17,6 +17,16 @@ const Chat = ({ socket }) => {
 
   const navigate = useNavigate();
 
+  window.addEventListener("resize", () => {
+    const currentHeight = window.innerHeight;
+    const currentWidth = window.innerWidth;
+    if (currentWidth <= 800) {
+      document.querySelector(
+        ".c-container"
+      ).style.height = `${currentHeight}px`;
+    }
+  });
+
   useEffect(() => {
     async function auth() {
       if (!localStorage.getItem("chat-app-user")) {

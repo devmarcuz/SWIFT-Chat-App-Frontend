@@ -27,7 +27,7 @@
 }
 @media screen and (max-width: 800px) {
   .c-container .chat-container {
-    height: 100vh;
+    height: 100%;
     width: 100%;
   }
 }
@@ -367,6 +367,8 @@
   color: white;
   font-size: 16px;
   font-weight: bold;
+  text-align: center;
+  width: 100%;
 }
 @media screen and (max-width: 800px) {
   .c-container .chat-container .message-container .welcome-resp-message {
@@ -645,10 +647,16 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .c-container .chat-container .footer .icon svg {
   color: black;
   font-size: 23px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
 }
 .c-container .chat-container .footer .icon:hover {
   border-radius: 50%;
@@ -671,21 +679,6 @@
 @media screen and (min-width: 801px) {
   .c-container .chat-container .footer {
     display: none;
-  }
-}
-@media screen and (max-width: 375px) {
-  .c-container .chat-container .footer {
-    bottom: 10%;
-  }
-}
-@media screen and (max-width: 414px) {
-  .c-container .chat-container .footer {
-    bottom: 33%;
-  }
-}
-@media screen and (max-width: 391px) {
-  .c-container .chat-container .footer {
-    bottom: 29%;
   }
 }
 @media screen and (max-width: 800px) {
