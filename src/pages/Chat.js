@@ -24,6 +24,11 @@ const Chat = ({ socket }) => {
       document.querySelector(
         ".c-container"
       ).style.height = `${currentHeight}px`;
+      // if (document.querySelector(".chat-content")) {
+      //   document.querySelector(
+      //     ".chat-content"
+      //   ).style.height = `${currentHeight}px`;
+      // }
     }
   });
 
