@@ -6,6 +6,7 @@ import "../css/SetAvatar.css";
 import Loader from "../assets/loader.gif";
 import { setAvatarApi } from "../api/ApiRoutes";
 import { useNavigate } from "react-router-dom";
+import { Buffer } from "Buffer";
 
 const SetAvatar = () => {
   const api = "https://api.multiavatar.com/45678945";
@@ -39,11 +40,21 @@ const SetAvatar = () => {
     async function auth() {
       const data = [];
       try {
+        let config = {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Credentials": "true",
+            "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
+            "Access-Control-Allow-Headers":
+              "Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, if-Modified-Since, X-File-Name, Cache-Control",
+          },
+        };
         for (let i = 0; i < 4; i++) {
           const image = await axios.get(
-            `${api}/${Math.round(Math.random() * 1000)}`
+            `${api}/${Math.round(Math.random() * 1000)}`,
+            config
           );
-          const buffer = new Buffer(image.data);
+          const buffer = Buffer.from(image.data);
           data.push(buffer.toString("base64"));
         }
         setAvatars(data);

@@ -205,6 +205,7 @@ const MessageContainer = ({
                     placeholder="Enter message"
                     name="message"
                     value={message}
+                    autoComplete="off"
                     onChange={(e) => setMessage(e.target.value)}
                   />
                   {message ? (
