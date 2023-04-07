@@ -101,9 +101,19 @@ const SetAvatar = () => {
   useEffect(() => {
     async function fetchData() {
       const data = [];
+      let config = {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Credentials": "true",
+          "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
+          "Access-Control-Allow-Headers":
+            "Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, if-Modified-Since, X-File-Name, Cache-Control",
+        },
+      };
       for (let i = 0; i < 4; i++) {
         const image = await axios.get(
-          `${api}/${Math.round(Math.random() * 1000)}`
+          `${api}/${Math.round(Math.random() * 1000)}`,
+          config
         );
         const buffer = Buffer.from(image.data);
         // const buffer = new Buffer(image.data);
