@@ -8,10 +8,10 @@ import "../css/SetAvatar.css";
 import Loader from "../assets/loader.gif";
 import { setAvatarApi } from "../api/ApiRoutes";
 import { useNavigate } from "react-router-dom";
-import { Buffer } from "buffer";
+// import { Buffer } from "buffer";
 
 const SetAvatar = () => {
-  const api = "https://api.multiavatar.com/4645646";
+  // const api = "https://api.multiavatar.com/4645646";
 
   const [avatars, setAvatars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -196,7 +196,7 @@ const SetAvatar = () => {
 
   return (
     <div className="container">
-      {!isLoading ? (
+      {isLoading ? (
         <img src={Loader} alt="" className="img-loader" />
       ) : (
         <>
