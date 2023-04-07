@@ -138,7 +138,6 @@ const SetAvatar = () => {
   // }, []);
 
   useEffect(() => {
-    setIsLoading(true);
     const timeout = setTimeout(() => {
       const data = [];
       for (let i = 1; i <= 4; i++) {
