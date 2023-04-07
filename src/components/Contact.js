@@ -29,7 +29,7 @@ const Contact = ({
                   }}
                 >
                   <img
-                    src={`data:image/svg+xml;base64,${user.avatarImage}`}
+                    src={`/avatars/Multiavatar-User${user.avatarImage}.png`}
                     alt="avatar"
                     className={`online ${!user.online && "offline"}`}
                   />
@@ -40,9 +40,12 @@ const Contact = ({
           <div className="current-user">
             <div className="usr">
               <img
-                src={`data:image/svg+xml;base64,${
+                // src={`data:image/svg+xml;base64,${
+                //   currentUser && currentUser.avatarImage
+                // }`}
+                src={`/avatars/Multiavatar-User${
                   currentUser && currentUser.avatarImage
-                }`}
+                }.png`}
                 alt="avatar"
               />
               <p>{currentUser && currentUser.username}</p>
@@ -73,7 +76,7 @@ const Contact = ({
                   }}
                 >
                   <img
-                    src={`data:image/svg+xml;base64,${user.avatarImage}`}
+                    src={`/avatars/Multiavatar-User${user.avatarImage}.png`}
                     alt="avatar"
                     className={`online ${!user.online && "offline"}`}
                   />

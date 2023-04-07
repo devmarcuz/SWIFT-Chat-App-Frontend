@@ -1,3 +1,5 @@
+// eslint-disable
+
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
@@ -98,32 +100,57 @@ const SetAvatar = () => {
   //   auth();
   // }, [api]);
 
+  // useEffect(() => {
+  //   async function fetchData() {
+  //     const data = [];
+  //     let config = {
+  //       headers: {
+  //         "Access-Control-Allow-Origin": "*",
+  //         "Access-Control-Allow-Credentials": "true",
+  //         "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
+  //         "Access-Control-Allow-Headers":
+  //           "Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, if-Modified-Since, X-File-Name, Cache-Control",
+  //       },
+  //     };
+  //     for (let i = 0; i < 20; i++) {
+  //       const instance = axios.create({
+  //         baseURL: `${api}/${Math.round(Math.random() * 1000)}`,
+  //         headers: {
+  //           "Access-Control-Allow-Origin": "*",
+  //           "Access-Control-Allow-Methods": "OPTIONS, GET, POST, PUT, DELETE",
+  //           "Access-Control-Allow-Headers":
+  //             "Origin, Content-Type, X-Requested-WIth, Accept",
+  //           "Content-Type": "application/json",
+  //         },
+  //       });
+
+  //       const image = await instance.get("/");
+  //       const buffer = Buffer.from(image.data);
+  //       // const buffer = new Buffer(image.data);
+  //       data.push(buffer.toString("base64"));
+  //       console.log(image);
+  //     }
+  //     setAvatars(data);
+  //     console.log(data);
+  //     setIsLoading(false);
+  //   }
+  //   fetchData();
+  // }, []);
+
   useEffect(() => {
-    async function fetchData() {
+    setIsLoading(true);
+    const timeout = setTimeout(() => {
       const data = [];
-      let config = {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
-          "Access-Control-Allow-Credentials": "true",
-          "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
-          "Access-Control-Allow-Headers":
-            "Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, if-Modified-Since, X-File-Name, Cache-Control",
-        },
-      };
-      for (let i = 0; i < 4; i++) {
-        const image = await axios.get(
-          `${api}/${Math.round(Math.random() * 1000)}`,
-          config
-        );
-        const buffer = Buffer.from(image.data);
-        // const buffer = new Buffer(image.data);
-        data.push(buffer.toString("base64"));
+      for (let i = 1; i <= 4; i++) {
+        let randomNumber = Math.floor(Math.random() * 20) + 1;
+        if (!data.includes(randomNumber)) {
+          data.push(randomNumber);
+        }
       }
       setAvatars(data);
-      console.log(data);
       setIsLoading(false);
-    }
-    fetchData();
+    }, Math.floor(Math.random() * 5000) + 1000);
+    return () => clearTimeout(timeout);
   }, []);
 
   // useEffect(() => {
@@ -152,7 +179,7 @@ const SetAvatar = () => {
     } else
       axios
         .post(`${setAvatarApi}/${currentUser._id}`, {
-          avatarImage: avatars[selectedAvatar],
+          avatarImage: selectedAvatar,
         })
         .then((res) => {
           if (!res.data.status) {
@@ -181,10 +208,13 @@ const SetAvatar = () => {
               avatars.map((avr, index) => (
                 <div className="img" key={index}>
                   <img
-                    src={`data:image/svg+xml;base64,${avr}`}
+                    // src={`data:image/svg+xml;base64,${avr}`}
+                    src={`/avatars/Multiavatar-User${avatars[index]}.png`}
                     alt="avatar"
-                    onClick={() => setSelectedAvatar(index)}
-                    className={`${selectedAvatar === index && "selected"}`}
+                    onClick={() => setSelectedAvatar(avatars[index])}
+                    className={`${
+                      selectedAvatar === avatars[index] && "selected"
+                    }`}
                   />
                 </div>
               ))}

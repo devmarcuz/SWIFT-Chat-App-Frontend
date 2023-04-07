@@ -167,7 +167,8 @@ const MessageContainer = ({
           <div className="chat-header">
             <div className="logo">
               <img
-                src={`data:image/svg+xml;base64,${otherUser.avatarImage}`}
+                // src={`data:image/svg+xml;base64,${otherUser.avatarImage}`}
+                    src={`/avatars/Multiavatar-User${otherUser.avatarImage}.png`}
                 alt="avatar"
               />
               <p>{otherUser.username}</p>
