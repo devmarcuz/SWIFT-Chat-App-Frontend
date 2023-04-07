@@ -6,10 +6,10 @@ import "../css/SetAvatar.css";
 import Loader from "../assets/loader.gif";
 import { setAvatarApi } from "../api/ApiRoutes";
 import { useNavigate } from "react-router-dom";
-import { Buffer } from "Buffer";
+import { Buffer } from "buffer";
 
 const SetAvatar = () => {
-  const api = "https://api.multiavatar.com/45678945";
+  const api = "https://api.multiavatar.com/4645646";
 
   const [avatars, setAvatars] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -36,35 +36,104 @@ const SetAvatar = () => {
     auth();
   }, [navigate]);
 
+  // useEffect(() => {
+  //   async function auth() {
+  //     fetch(`${api}/${JSON.stringify(Math.round(Math.random * 1000))}`)
+  //       .then((res) => res.text())
+  //       .then((svg) => console.log(svg))
+  //       .catch((err) => console.log(err, "errorrororo"));
+  //     const data = [];
+  //     try {
+  //       let config = {
+  //         headers: {
+  //           "Access-Control-Allow-Origin": "*",
+  //           "Access-Control-Allow-Credentials": "true",
+  //           "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
+  //           "Access-Control-Allow-Headers":
+  //             "Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, if-Modified-Since, X-File-Name, Cache-Control",
+  //         },
+  //       };
+  //       for (let i = 0; i < 4; i++) {
+  //         const image = await axios.get(`${api}`, config);
+
+  //         const buffer = Buffer.from(image.data);
+  //         data.push(buffer.toString("base64"));
+  //       }
+  //       setAvatars(data);
+  //       setIsLoading(false);
+  //     } catch (err) {
+  //       return err;
+  //     }
+  //   }
+  //   auth();
+  // }, [api]);
+
+  // useEffect(() => {
+  //   async function auth() {
+  //     const data = [];
+  //     try {
+  //       let config = {
+  //         headers: {
+  //           "Access-Control-Allow-Origin": "*",
+  //           "Access-Control-Allow-Credentials": "true",
+  //           "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
+  //           "Access-Control-Allow-Headers":
+  //             "Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, if-Modified-Since, X-File-Name, Cache-Control",
+  //         },
+  //       };
+  //       for (let i = 0; i < 4; i++) {
+  //         const image = await axios.get(
+  //           `${api}/${Math.round(Math.random() * 1000)}`,
+  //           config
+  //         );
+  //         const buffer = Buffer.from(image.data);
+  //         data.push(buffer.toString("base64"));
+  //       }
+  //       setAvatars(data);
+  //       setIsLoading(false);
+  //     } catch (err) {
+  //       return err;
+  //     }
+  //   }
+  //   auth();
+  // }, [api]);
+
   useEffect(() => {
-    async function auth() {
+    async function fetchData() {
       const data = [];
-      try {
-        let config = {
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-            "Access-Control-Allow-Credentials": "true",
-            "Access-Control-Allow-Methods": "OPTIONS, GET, POST",
-            "Access-Control-Allow-Headers":
-              "Content-Type, Depth, User-Agent, X-File-Size, X-Requested-With, if-Modified-Since, X-File-Name, Cache-Control",
-          },
-        };
-        for (let i = 0; i < 4; i++) {
-          const image = await axios.get(
-            `${api}/${Math.round(Math.random() * 1000)}`,
-            config
-          );
-          const buffer = Buffer.from(image.data);
-          data.push(buffer.toString("base64"));
-        }
-        setAvatars(data);
-        setIsLoading(false);
-      } catch (err) {
-        return err;
+      for (let i = 0; i < 4; i++) {
+        const image = await axios.get(
+          `${api}/${Math.round(Math.random() * 1000)}`
+        );
+        const buffer = Buffer.from(image.data);
+        // const buffer = new Buffer(image.data);
+        data.push(buffer.toString("base64"));
       }
+      setAvatars(data);
+      console.log(data);
+      setIsLoading(false);
     }
-    auth();
-  }, [api]);
+    fetchData();
+  }, []);
+
+  // useEffect(() => {
+  //   async function fetchImageData() {
+  //     const data = [];
+  //     for (let i = 0; i < 4; i++) {
+  //       fetch(`${api}/${Math.round(Math.random() * 1000)}`)
+  //         .then((res) => res.arrayBuffer())
+  //         .then((buffer) => {
+  //           const imageData = Buffer.from(buffer);
+  //           data.push(imageData.toString("base64"));
+  //           console.log(data);
+  //         })
+  //         .catch((err) => console.log(err));
+  //     }
+  //     setAvatars(data);
+  //     setIsLoading(false);
+  //   }
+  //   fetchImageData();
+  // }, []);
 
   const submitAvatar = () => {
     if (!selectedAvatar) {
