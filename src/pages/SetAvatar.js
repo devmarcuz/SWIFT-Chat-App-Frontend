@@ -196,7 +196,7 @@ const SetAvatar = () => {
 
   return (
     <div className="container">
-      {isLoading ? (
+      {!isLoading ? (
         <img src={Loader} alt="" className="img-loader" />
       ) : (
         <>
